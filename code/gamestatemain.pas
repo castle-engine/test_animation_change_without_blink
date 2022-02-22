@@ -17,7 +17,7 @@ type
   private
     { Components designed using CGE editor, loaded from gamestatemain.castle-user-interface. }
     Viewport: TCastleViewport;
-    SceneKnight, SceneDragon: TCastleScene;
+    SceneKnight, SceneMouse, SceneDragon: TCastleScene;
     ButtonPlayAnimationRandom: TCastleButton;
     ButtonResetAndPlayRandom: TCastleButton;
     ButtonResetAndTimeSensorStartRandom: TCastleButton;
@@ -26,6 +26,7 @@ type
     { if any TTimeSensorNode was used to start animation using TTimeSensorNode.Start,
       then record it here. }
     SceneKnightSensor: TTimeSensorNode;
+    SceneMouseSensor: TTimeSensorNode;
     SceneDragonSensor: TTimeSensorNode;
 
     function SceneRandomAnim(const Scene: TCastleScene): String;
@@ -64,6 +65,7 @@ begin
   ButtonResetAndTimeSensorStartRandom := DesignedComponent('ButtonResetAndTimeSensorStartRandom') as TCastleButton;
   Viewport := DesignedComponent('Viewport') as TCastleViewport;
   SceneKnight := DesignedComponent('SceneKnight') as TCastleScene;
+  SceneMouse := DesignedComponent('SceneMouse') as TCastleScene;
   SceneDragon := DesignedComponent('SceneDragon') as TCastleScene;
 
   ButtonPlayAnimationRandom.OnClick := {$ifdef FPC}@{$endif} ClickPlayAnimationRandom;
@@ -93,12 +95,19 @@ begin
     SceneKnightSensor.Stop;
     SceneKnightSensor := nil;
   end;
+  if SceneMouseSensor <> nil then
+  begin
+    SceneMouseSensor.Stop;
+    SceneMouseSensor := nil;
+  end;
   if SceneDragonSensor <> nil then
   begin
     SceneDragonSensor.Stop;
     SceneDragonSensor := nil;
   end;
+
   SceneKnight.PlayAnimation(SceneRandomAnim(SceneKnight), true);
+  SceneMouse.PlayAnimation(SceneRandomAnim(SceneMouse), true);
   SceneDragon.PlayAnimation(SceneRandomAnim(SceneDragon), true);
 end;
 
@@ -109,16 +118,27 @@ begin
     SceneKnightSensor.Stop;
     SceneKnightSensor := nil;
   end;
+  if SceneMouseSensor <> nil then
+  begin
+    SceneMouseSensor.Stop;
+    SceneMouseSensor := nil;
+  end;
   if SceneDragonSensor <> nil then
   begin
     SceneDragonSensor.Stop;
     SceneDragonSensor := nil;
   end;
+
   SceneKnight.StopAnimation;
+  SceneMouse.StopAnimation;
   SceneDragon.StopAnimation;
+
   SceneKnight.ResetAnimationState;
+  SceneMouse.ResetAnimationState;
   SceneDragon.ResetAnimationState;
+
   SceneKnight.PlayAnimation(SceneRandomAnim(SceneKnight), true);
+  SceneMouse.PlayAnimation(SceneRandomAnim(SceneMouse), true);
   SceneDragon.PlayAnimation(SceneRandomAnim(SceneDragon), true);
 end;
 
@@ -129,17 +149,29 @@ begin
     SceneKnightSensor.Stop;
     SceneKnightSensor := nil;
   end;
+  if SceneMouseSensor <> nil then
+  begin
+    SceneMouseSensor.Stop;
+    SceneMouseSensor := nil;
+  end;
   if SceneDragonSensor <> nil then
   begin
     SceneDragonSensor.Stop;
     SceneDragonSensor := nil;
   end;
+
   SceneKnight.StopAnimation;
+  SceneMouse.StopAnimation;
   SceneDragon.StopAnimation;
+
   SceneKnight.ResetAnimationState;
+  SceneMouse.ResetAnimationState;
   SceneDragon.ResetAnimationState;
+
   SceneKnightSensor := SceneKnight.AnimationTimeSensor(SceneRandomAnim(SceneKnight));
   SceneKnightSensor.Start(true);
+  SceneMouseSensor := SceneMouse.AnimationTimeSensor(SceneRandomAnim(SceneMouse));
+  SceneMouseSensor.Start(true);
   SceneDragonSensor := SceneDragon.AnimationTimeSensor(SceneRandomAnim(SceneDragon));
   SceneDragonSensor.Start(true);
 end;

@@ -17,9 +17,9 @@
         "$$ClassName" : "TCastleCamera",
         "InitialPositionPersistent" : {
           "$$ClassName" : "TCastleVector3Persistent",
-          "X" : 2.2013330459594727E-001,
-          "Y" : 1.2363555431365967E+000,
-          "Z" : 7.0521430969238281E+000
+          "X" : 4.4035518169403076E-001,
+          "Y" : 9.5807564258575439E-001,
+          "Z" : 8.8725938796997070E+000
         },
         "Name" : "Camera",
         "Orthographic" : {
@@ -34,7 +34,7 @@
       "FullSize" : true,
       "Items" : {
         "$$ClassName" : "TCastleRootTransform",
-        "MainScene" : "SceneKnight",
+        "MainScene" : "SceneMouse",
         "Name" : "Items",
         "PhysicsProperties" : {
           "$$ClassName" : "TPhysicsProperties",
@@ -45,7 +45,7 @@
             "$$ClassName" : "TCastleScene",
             "ExposeTransforms" : [
             ],
-            "Name" : "SceneKnight",
+            "Name" : "SceneMouse",
             "RenderOptions" : {
               "$$ClassName" : "TCastleScene.TSceneRenderOptions",
               "Name" : "RenderOptions"
@@ -61,7 +61,7 @@
             "$$ClassName" : "TCastleScene",
             "ExposeTransforms" : [
             ],
-            "Name" : "SceneKnight1",
+            "Name" : "SceneKnight",
             "RenderOptions" : {
               "$$ClassName" : "TCastleScene.TSceneRenderOptions",
               "Name" : "RenderOptions"
