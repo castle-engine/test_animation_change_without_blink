@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="test_animation_change_without_blink"
+  standalone_source="test_animation_change_without_blink_standalone.dpr"
+  game_units="GameInitialize"
+  qualified_name="com.mycompany.testanimationchangewithoutblink"
+  caption="Test Animation Change Without Bad Blink"
+>
+  <compiler_options>
+    <search_paths>
+      <path value="code/" />
+    </search_paths>
+  </compiler_options>
+</project>
